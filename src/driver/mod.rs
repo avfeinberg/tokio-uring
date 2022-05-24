@@ -18,7 +18,7 @@ mod recv_from;
 
 mod send_to;
 
-mod shared_fd;
+pub mod shared_fd;
 pub use shared_fd::SharedFd;
 
 mod socket;

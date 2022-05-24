@@ -71,7 +71,7 @@ macro_rules! syscall {
 
 #[macro_use]
 mod future;
-mod driver;
+pub mod driver;
 mod runtime;
 
 pub mod buf;

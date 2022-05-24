@@ -19,7 +19,7 @@ mod recv_from;
 mod send_to;
 
 mod shared_fd;
-pub(crate) use shared_fd::SharedFd;
+pub use shared_fd::SharedFd;
 
 mod socket;
 pub(crate) use socket::Socket;

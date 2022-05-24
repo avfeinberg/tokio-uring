@@ -9,7 +9,7 @@ use std::task::Waker;
 // Tracks in-flight operations on a file descriptor. Ensures all in-flight
 // operations complete before submitting the close.
 #[derive(Clone)]
-pub(crate) struct SharedFd {
+pub struct SharedFd {
     inner: Rc<Inner>,
 }
 
@@ -36,7 +36,8 @@ enum State {
 }
 
 impl SharedFd {
-    pub(crate) fn new(fd: RawFd) -> SharedFd {
+    /// Exposed constructor method
+    pub fn new(fd: RawFd) -> SharedFd {
         SharedFd {
             inner: Rc::new(Inner {
                 fd,

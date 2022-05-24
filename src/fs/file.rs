@@ -116,7 +116,8 @@ impl File {
             .await
     }
 
-    pub(crate) fn from_shared_fd(fd: SharedFd) -> File {
+    /// Create from `SharedFd`
+    pub fn from_shared_fd(fd: SharedFd) -> File {
         File { fd }
     }
 

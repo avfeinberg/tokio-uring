@@ -4,7 +4,7 @@ use crate::fs::OpenOptions;
 
 use std::fmt;
 use std::io;
-use std::os::unix::io::{AsRawFd, RawFd};
+use std::os::unix::io::{AsRawFd, FromRawFd, RawFd};
 use std::path::Path;
 
 /// A reference to an open file on the filesystem.
@@ -333,6 +333,12 @@ impl File {
 impl AsRawFd for File {
     fn as_raw_fd(&self) -> RawFd {
         self.fd.raw_fd()
+    }
+}
+
+impl FromRawFd for File {
+    unsafe fn from_raw_fd(fd: RawFd) -> File {
+        File::from_shared_fd(SharedFd::new(fd))
     }
 }
 
